@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./spectre-icons.min.css">
+    <link rel="stylesheet" href="./spectre.min.css">
+    <script src="./jquery.min.js"></script>
+    <script src="./vue.min.js"></script>
+    <style>
+    </style>
+    <title>You Dirty!</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <br><br>
+            <div class="columns">
+                <!-- <div class="column col-6 center-block">col-6</div> -->
+                <div class="column col-4 col-mx-auto col-sm-10">
+                    <form v-on:submit.prevent="fetchData">
+                        <div class="input-group"><span class="input-group-addon">关键词</span>
+                            <input v-model="kw" class="form-input" type="text" placeholder="keyword">
+                            <button class="btn btn-primary input-group-btn" v-bind:class="loading">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div class="columns">
+                <div class="column col-4  col-mx-auto col-sm-auto">搜索结果:{{infos.length}}</div>
+            </div>
+            <div class="columns">
+                <div class="column col-1 col-sm-auto"></div>
+                <div class="column col-10 col-sm-12">
+                    <div class="accordion" v-for="(info,index) in infos">
+                        <input v-bind:id="'accordion-'+index" type="checkbox" name="accordion-radio" hidden="">
+                        <label class="accordion-header c-hand" v-bind:for="'accordion-'+index"><i class="icon icon-arrow-right mr-1"></i>{{info.name}}</label>
+                        <div class="accordion-body">
+                            <ul class="menu menu-nav" style="z-index:20">
+                                <li class="menu-item">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>{{info.pay}}</td>
+                                                <td>{{info.place}}</td>
+                                                <td>{{info.time}}</td>
+                                                <td>{{info.type}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{info.qq}}</td>
+                                                <td>{{info.contact}}</td>
+                                                <td>{{info.env}}</td>
+                                                <td>{{info.safe}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{info.service}}</td>
+                                                <td>{{info.count}}</td>
+                                                <td>{{info.age}}</td>
+                                                <td>{{info.face}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan=2>{{info.trueplace}}</td>
+                                                <td colspan=2>{{info.come}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan=2>{{info.infosource}}</td>
+                                                <td colspan=2>{{info.feeling}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                                <li class="menu-item">
+                                    <div class="columns">
+                                        <div class="column col-12 col-xs-12 col-sm-auto">
+                                            <p style="border:1px solid #ddd;padding:1em">
+                                                {{info.text}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="column col-1 col-sm-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
